@@ -64,6 +64,7 @@ public class ConnectionServiceImpl implements ConnectionService {
             user.getConnectionList().add(connection);
             serviceProviderWithLowestId.getConnectionList().add(connection);
             userRepository2.save(user);
+            serviceProviderRepository2.save(serviceProviderWithLowestId);
         }
         else{
             throw new Exception("Unable to connect");
