@@ -63,6 +63,6 @@ public class UserServiceImpl implements UserService {
 
         serviceProvider.getUsers().add(savedUser);
 
-        return savedUser;
+        return user;
     }
 }

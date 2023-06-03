@@ -30,8 +30,8 @@ public class AdminServiceImpl implements AdminService{
         Admin admin = new Admin();
         admin.setUsername(username);
         admin.setPassword(password);
-
-        return adminRepository1.save(admin);
+        adminRepository1.save(admin);
+        return admin;
     }
 
     @Override
@@ -54,7 +54,8 @@ public class AdminServiceImpl implements AdminService{
         serviceProviderList.add(serviceProvider);
         admin.setServiceProviders(serviceProviderList);
 
-        return adminRepository1.save(admin);
+        adminRepository1.save(admin);
+        return admin;
     }
 
     @Override

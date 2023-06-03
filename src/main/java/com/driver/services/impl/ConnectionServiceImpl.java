@@ -77,7 +77,8 @@ public class ConnectionServiceImpl implements ConnectionService {
         }
         user.setMaskedIp(null);
         user.setConnected(false);
-        return userRepository2.save(user);
+        userRepository2.save(user);
+        return user;
     }
     @Override
     public User communicate(int senderId, int receiverId) throws Exception {
@@ -87,7 +88,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         if(receiver.getMaskedIp() != null){
             String code = receiver.getMaskedIp().substring(0,3);
 
-            if(sender.getOriginalCountry().getCountryName().toCode().equals(code))
+            if(sender.getOriginalCountry().getCode().equals(code))
                 return sender;
 
             try {
