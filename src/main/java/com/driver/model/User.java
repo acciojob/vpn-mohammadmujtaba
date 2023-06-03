@@ -24,7 +24,7 @@ public class User {
     @ManyToMany(mappedBy = "users",cascade = CascadeType.ALL)
     private List<ServiceProvider> serviceProviderList = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Connection> connectionList = new ArrayList<>();
 
     @OneToOne

@@ -39,9 +39,11 @@ public class ConnectionServiceImpl implements ConnectionService {
 
 
         List<ServiceProvider> serviceProviderList = user.getServiceProviderList();
+
         ServiceProvider serviceProviderWithLowestId = null;
         int lowestId = Integer.MAX_VALUE;
         Country country = null;
+
         for (ServiceProvider serviceProvider : serviceProviderList){
             List<Country> countryList = serviceProvider.getCountryList();
             for (Country country1 : countryList){
@@ -62,7 +64,6 @@ public class ConnectionServiceImpl implements ConnectionService {
             user.getConnectionList().add(connection);
             serviceProviderWithLowestId.getConnectionList().add(connection);
             userRepository2.save(user);
-            serviceProviderRepository2.save(serviceProviderWithLowestId);
         }
         else{
             throw new Exception("Unable to connect");
