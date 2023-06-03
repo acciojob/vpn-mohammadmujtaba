@@ -30,7 +30,7 @@ public class ConnectionServiceImpl implements ConnectionService {
             throw new Exception("Already connected");
 
         //checking if the user belong to the same country
-        if(user.getCountry().getCountryName().toString().equals(countryName))
+        if(user.getOriginalCountry().getCountryName().toString().equals(countryName))
             return user;
 
         if (user.getServiceProviderList().size() == 0){
@@ -87,7 +87,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         if(receiver.getMaskedIp() != null){
             String code = receiver.getMaskedIp().substring(0,3);
 
-            if(sender.getCountry().getCountryName().toCode().equals(code))
+            if(sender.getOriginalCountry().getCountryName().toCode().equals(code))
                 return sender;
 
             try {
@@ -98,11 +98,11 @@ public class ConnectionServiceImpl implements ConnectionService {
             }
         }
 
-        if(sender.getCountry().getCountryName().toString().equals(receiver.getCountry().getCountryName().toString()))
+        if(sender.getOriginalCountry().getCountryName().toString().equals(receiver.getOriginalCountry().getCountryName().toString()))
             return sender;
 
         try {
-            sender = connect(senderId, receiver.getCountry().getCountryName().toString());
+            sender = connect(senderId, receiver.getOriginalCountry().getCountryName().toString());
             return sender;
         }catch (Exception e){
             throw new Exception("Cannot establish communication");
